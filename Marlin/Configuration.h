@@ -482,9 +482,9 @@
   //#define DEFAULT_bedKp 206.74
   //#define DEFAULT_bedKi 13.87
   //#define DEFAULT_bedKd 770.62
-  #define DEFAULT_bedKp 140.41
-  #define DEFAULT_bedKi 7.22
-  #define DEFAULT_bedKd 682.76
+  #define DEFAULT_bedKp 159.70
+  #define DEFAULT_bedKi 8.35
+  #define DEFAULT_bedKd 763.75
 #endif // PIDTEMPBED
 
 // @section extruder
@@ -1192,12 +1192,12 @@
  * Override if the automatically selected points are inadequate.
  */
 #if ENABLED(AUTO_BED_LEVELING_3POINT) || ENABLED(AUTO_BED_LEVELING_UBL)
-  //#define PROBE_PT_1_X 15
-  //#define PROBE_PT_1_Y 180
-  //#define PROBE_PT_2_X 15
-  //#define PROBE_PT_2_Y 20
-  //#define PROBE_PT_3_X 170
-  //#define PROBE_PT_3_Y 20
+  #define PROBE_PT_1_X 30
+  #define PROBE_PT_1_Y 170
+  #define PROBE_PT_2_X 30
+  #define PROBE_PT_2_Y 30
+  #define PROBE_PT_3_X 170
+  #define PROBE_PT_3_Y 30
 #endif
 
 /**
