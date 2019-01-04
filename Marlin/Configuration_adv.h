@@ -1349,8 +1349,8 @@
   #define E0_MICROSTEPS       16
 
   #define E1_CURRENT         800
-  #define E1_MICROSTEPS       16
   #define HOLD_MULTIPLIER_E1 0.1  // Scales down the holding current from run current
+  #define E1_MICROSTEPS       32
 
   #define E2_CURRENT         800
   #define HOLD_MULTIPLIER_E2 0.1  // Scales down the holding current from run current
@@ -1380,7 +1380,7 @@
   //#define Z2_CS_PIN         -1
   //#define Z3_CS_PIN         -1
   //#define E0_CS_PIN         -1
-  //#define E1_CS_PIN         -1
+  #define E1_CS_PIN         P4_28
   //#define E2_CS_PIN         -1
   //#define E3_CS_PIN         -1
   //#define E4_CS_PIN         -1
@@ -1391,10 +1391,10 @@
    * The default SW SPI pins are defined the respective pins files,
    * but you can override or define them here.
    */
-  //#define TMC_USE_SW_SPI
-  //#define TMC_SW_MOSI       -1
-  //#define TMC_SW_MISO       -1
-  //#define TMC_SW_SCK        -1
+  #define TMC_USE_SW_SPI
+  #define TMC_SW_MOSI       P1_22
+  #define TMC_SW_MISO       P1_23
+  #define TMC_SW_SCK        P2_12
 
   /**
    * Use Trinamic's ultra quiet stepping mode.
@@ -1431,7 +1431,7 @@
    * M912 - Clear stepper driver overtemperature pre-warn condition flag.
    * M122 S0/1 - Report driver parameters (Requires TMC_DEBUG)
    */
-  //#define MONITOR_DRIVER_STATUS
+  #define MONITOR_DRIVER_STATUS
 
   #if ENABLED(MONITOR_DRIVER_STATUS)
     #define CURRENT_STEP_DOWN     50  // [mA]
@@ -1473,7 +1473,7 @@
    * It is advised to set X/Y/Z_HOME_BUMP_MM to 0.
    * M914 X/Y/Z to live tune the setting
    */
-  //#define SENSORLESS_HOMING // TMC2130 only
+//  #define SENSORLESS_HOMING // TMC2130 only
 
   /**
    * Use StallGuard2 to probe the bed with the nozzle.
@@ -1485,15 +1485,16 @@
 
   #if ENABLED(SENSORLESS_HOMING) || ENABLED(SENSORLESS_PROBING)
     #define X_STALL_SENSITIVITY  8
-    #define Y_STALL_SENSITIVITY  8
+    //#define Y_STALL_SENSITIVITY  8
     //#define Z_STALL_SENSITIVITY  8
+    #define X_HOME_BUMP_MM  0
   #endif
 
   /**
    * Enable M122 debugging command for TMC stepper drivers.
    * M122 S0/1 will enable continous reporting.
    */
-  //#define TMC_DEBUG
+  #define TMC_DEBUG
 
   /**
    * M915 Z Axis Calibration
