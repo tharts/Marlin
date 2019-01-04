@@ -141,7 +141,7 @@
 
 #if HAS_TRINAMIC
   enum StealthIndex : uint8_t { STEALTH_AXIS_XY, STEALTH_AXIS_Z, STEALTH_AXIS_E };
-  #define _TMC_INIT(ST, SPMM_INDEX, STEALTH_INDEX) tmc_init(stepper##ST, ST##_CURRENT, ST##_MICROSTEPS, ST##_HYBRID_THRESHOLD, planner.settings.axis_steps_per_mm[SPMM_INDEX], stealthchop_by_axis[STEALTH_INDEX])
+  #define _TMC_INIT(ST, SPMM_INDEX, STEALTH_INDEX) tmc_init(stepper##ST, ST##_CURRENT, HOLD_MULTIPLIER_##ST, ST##_MICROSTEPS, ST##_HYBRID_THRESHOLD, planner.settings.axis_steps_per_mm[SPMM_INDEX], stealthchop_by_axis[STEALTH_INDEX])
 #endif
 
 //
@@ -202,7 +202,7 @@
   #endif
 
   template<char AXIS_LETTER, char DRIVER_ID>
-  void tmc_init(TMCMarlin<TMC2130Stepper, AXIS_LETTER, DRIVER_ID> &st, const uint16_t mA, const uint16_t microsteps, const uint32_t thrs, const float spmm, const bool stealth) {
+  void tmc_init(TMCMarlin<TMC2130Stepper, AXIS_LETTER, DRIVER_ID> &st, const uint16_t mA, const float hold_multiplier, const uint16_t microsteps, const uint32_t thrs, const float spmm, const bool stealth) {
     st.begin();
 
     static constexpr int8_t timings[] = CHOPPER_TIMING; // Default 4, -2, 1
@@ -215,7 +215,7 @@
     chopconf.hstrt = timings[2] - 1;
     st.CHOPCONF(chopconf.sr);
 
-    st.rms_current(mA, HOLD_MULTIPLIER);
+    st.rms_current(mA, hold_multiplier);
     st.microsteps(microsteps);
     st.iholddelay(10);
     st.TPOWERDOWN(128); // ~2s until driver lowers to hold current
@@ -441,7 +441,7 @@
   }
 
   template<char AXIS_LETTER, char DRIVER_ID>
-  void tmc_init(TMCMarlin<TMC2208Stepper, AXIS_LETTER, DRIVER_ID> &st, const uint16_t mA, const uint16_t microsteps, const uint32_t thrs, const float spmm, const bool stealth) {
+  void tmc_init(TMCMarlin<TMC2208Stepper, AXIS_LETTER, DRIVER_ID> &st, const uint16_t mA, const float hold_multiplier, const uint16_t microsteps, const uint32_t thrs, const float spmm, const bool stealth) {
     static constexpr int8_t timings[] = CHOPPER_TIMING; // Default 4, -2, 1
 
     TMC2208_n::GCONF_t gconf{0};
@@ -459,7 +459,7 @@
     chopconf.hstrt = timings[2] - 1;
     st.CHOPCONF(chopconf.sr);
 
-    st.rms_current(mA, HOLD_MULTIPLIER);
+    st.rms_current(mA, hold_multiplier);
     st.microsteps(microsteps);
     st.iholddelay(10);
     st.TPOWERDOWN(128); // ~2s until driver lowers to hold current
@@ -542,7 +542,7 @@
   #endif
 
   template<char AXIS_LETTER, char DRIVER_ID>
-  void tmc_init(TMCMarlin<TMC2660Stepper, AXIS_LETTER, DRIVER_ID> &st, const uint16_t mA, const uint16_t microsteps, const uint32_t, const float, const bool) {
+  void tmc_init(TMCMarlin<TMC2660Stepper, AXIS_LETTER, DRIVER_ID> &st, const uint16_t mA, const float hold_multiplier, const uint16_t microsteps, const uint32_t, const float, const bool) {
     st.begin();
 
     static constexpr int8_t timings[] = CHOPPER_TIMING; // Default 4, -2, 1
