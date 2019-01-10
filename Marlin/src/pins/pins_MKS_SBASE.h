@@ -89,7 +89,7 @@
 #define TEMP_BED_PIN        0   // A0 (TH1)
 #define TEMP_0_PIN          1   // A1 (TH2)
 #define TEMP_1_PIN          2   // A2 (TH3)
-#define TEMP_2_PIN          3   // A3 (TH4)
+//#define TEMP_2_PIN          3   // A3 (TH4)
 
 //
 // Heaters / Fans
@@ -262,9 +262,9 @@
   // J8
   #define X_CS_PIN         P1_22
   #define Y_CS_PIN         P1_23
-  #define Z_CS_PIN         P2_12
-  #define E0_CS_PIN        P2_11
-  #define E1_CS_PIN        P4_28
+  #define Z_CS_PIN         P2_11
+//  #define E0_CS_PIN        P2_11
+//  #define E1_CS_PIN        P4_28
 
 // Hardware SPI is on EXP2. See if you can make it work:
 // https://github.com/makerbase-mks/MKS-SBASE/issues/25

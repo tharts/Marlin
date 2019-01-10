@@ -1316,55 +1316,55 @@
   #define HOLD_MULTIPLIER    0.5  // Scales down the holding current from run current
   #define INTERPOLATE       true  // Interpolate X/Y/Z_MICROSTEPS to 256
 
-  #define X_CURRENT          800  // rms current in mA. Multiply by 1.41 for peak current.
-  #define HOLD_MULTIPLIER_X 0.1  // Scales down the holding current from run current
-  #define X_MICROSTEPS        16  // 0..256
+  #define X_CURRENT          600  // rms current in mA. Multiply by 1.41 for peak current.
+  #define HOLD_MULTIPLIER_X  0.5  // Scales down the holding current from run current
+  #define X_MICROSTEPS        32  // 0..256
 
-  #define Y_CURRENT          800
-  #define HOLD_MULTIPLIER_Y 0.1  // Scales down the holding current from run current
-  #define Y_MICROSTEPS        16
+  #define Y_CURRENT          600
+  #define HOLD_MULTIPLIER_Y  0.5  // Scales down the holding current from run current
+  #define Y_MICROSTEPS        32
 
-  #define Z_CURRENT          800
-  #define HOLD_MULTIPLIER_Z 0.1  // Scales down the holding current from run current
-  #define Z_MICROSTEPS        16
+  #define Z_CURRENT          600
+  #define HOLD_MULTIPLIER_Z 0.25  // Scales down the holding current from run current
+  #define Z_MICROSTEPS        32
 
-  #define X2_CURRENT         800
+  #define X2_CURRENT         550
   #define HOLD_MULTIPLIER_X2 0.1  // Scales down the holding current from run current
   #define X2_MICROSTEPS       16
 
-  #define Y2_CURRENT         800
+  #define Y2_CURRENT         550
   #define HOLD_MULTIPLIER_Y2 0.1  // Scales down the holding current from run current
   #define Y2_MICROSTEPS       16
 
-  #define Z2_CURRENT         800
+  #define Z2_CURRENT         550
   #define HOLD_MULTIPLIER_Z2 0.1  // Scales down the holding current from run current
   #define Z2_MICROSTEPS       16
 
-  #define Z3_CURRENT         800
+  #define Z3_CURRENT         550
   #define HOLD_MULTIPLIER_Z3 0.1  // Scales down the holding current from run current
   #define Z3_MICROSTEPS       16
 
-  #define E0_CURRENT         800
+  #define E0_CURRENT         550
   #define HOLD_MULTIPLIER_E0 0.1  // Scales down the holding current from run current
   #define E0_MICROSTEPS       16
 
-  #define E1_CURRENT         800
+  #define E1_CURRENT         550
   #define HOLD_MULTIPLIER_E1 0.1  // Scales down the holding current from run current
-  #define E1_MICROSTEPS       32
+  #define E1_MICROSTEPS       16
 
-  #define E2_CURRENT         800
+  #define E2_CURRENT         550
   #define HOLD_MULTIPLIER_E2 0.1  // Scales down the holding current from run current
   #define E2_MICROSTEPS       16
 
-  #define E3_CURRENT         800
+  #define E3_CURRENT         550
   #define HOLD_MULTIPLIER_E3 0.1  // Scales down the holding current from run current
   #define E3_MICROSTEPS       16
 
-  #define E4_CURRENT         800
+  #define E4_CURRENT         550
   #define HOLD_MULTIPLIER_E4 0.1  // Scales down the holding current from run current
   #define E4_MICROSTEPS       16
 
-  #define E5_CURRENT         800
+  #define E5_CURRENT         550
   #define HOLD_MULTIPLIER_E5 0.0  // Scales down the holding current from run current
   #define E5_MICROSTEPS       16
 
@@ -1372,7 +1372,7 @@
    * Override default SPI pins for TMC2130 and TMC2660 drivers here.
    * The default pins can be found in your board's pins file.
    */
-  //#define X_CS_PIN          -1
+  //#define X_CS_PIN          P4_28
   //#define Y_CS_PIN          -1
   //#define Z_CS_PIN          -1
   //#define X2_CS_PIN         -1
@@ -1380,7 +1380,7 @@
   //#define Z2_CS_PIN         -1
   //#define Z3_CS_PIN         -1
   //#define E0_CS_PIN         -1
-  #define E1_CS_PIN         P4_28
+  //#define E1_CS_PIN         P4_28
   //#define E2_CS_PIN         -1
   //#define E3_CS_PIN         -1
   //#define E4_CS_PIN         -1
@@ -1392,8 +1392,8 @@
    * but you can override or define them here.
    */
   #define TMC_USE_SW_SPI
-  #define TMC_SW_MOSI       P1_22
-  #define TMC_SW_MISO       P1_23
+  #define TMC_SW_MOSI       P0_03 //P2_11
+  #define TMC_SW_MISO       P0_02 //P4_28
   #define TMC_SW_SCK        P2_12
 
   /**
@@ -1418,7 +1418,7 @@
    * Define you own with
    * { <off_time[1..15]>, <hysteresis_end[-3..12]>, hysteresis_start[1..8] }
    */
-  #define CHOPPER_TIMING CHOPPER_DEFAULT_12V
+  #define CHOPPER_TIMING CHOPPER_MARLIN_119
 
   /**
    * Monitor Trinamic TMC2130 and TMC2208 drivers for error conditions,
@@ -1445,7 +1445,7 @@
    * STEALTHCHOP_(XY|Z|E) must be enabled to use HYBRID_THRESHOLD.
    * M913 X/Y/Z/E to live tune the setting
    */
-  //#define HYBRID_THRESHOLD
+  #define HYBRID_THRESHOLD
 
   #define X_HYBRID_THRESHOLD     100  // [mm/s]
   #define X2_HYBRID_THRESHOLD    100
@@ -1473,7 +1473,7 @@
    * It is advised to set X/Y/Z_HOME_BUMP_MM to 0.
    * M914 X/Y/Z to live tune the setting
    */
-//  #define SENSORLESS_HOMING // TMC2130 only
+  #define SENSORLESS_HOMING // TMC2130 only
 
   /**
    * Use StallGuard2 to probe the bed with the nozzle.
@@ -1481,13 +1481,15 @@
    * CAUTION: This could cause damage to machines that use a lead screw or threaded rod
    *          to move the Z axis. Take extreme care when attempting to enable this feature.
    */
-  //#define SENSORLESS_PROBING // TMC2130 only
+//  #define SENSORLESS_PROBING // TMC2130 only
 
   #if ENABLED(SENSORLESS_HOMING) || ENABLED(SENSORLESS_PROBING)
-    #define X_STALL_SENSITIVITY  8
-    //#define Y_STALL_SENSITIVITY  8
+    #define X_STALL_SENSITIVITY  7
+    #define Y_STALL_SENSITIVITY  9
     //#define Z_STALL_SENSITIVITY  8
     #define X_HOME_BUMP_MM  0
+    #define Y_HOME_BUMP_MM  0
+    //#define Z_HOME_BUMP_MM  0
   #endif
 
   /**
@@ -1506,10 +1508,10 @@
    * Use M915 Snn to specify the current.
    * Use M925 Znn to add extra Z height to Z_MAX_POS.
    */
-  //#define TMC_Z_CALIBRATION
+  #define TMC_Z_CALIBRATION
   #if ENABLED(TMC_Z_CALIBRATION)
-    #define CALIBRATION_CURRENT 250
-    #define CALIBRATION_EXTRA_HEIGHT 10
+    #define CALIBRATION_CURRENT 150
+    #define CALIBRATION_EXTRA_HEIGHT 2
   #endif
 
   /**
