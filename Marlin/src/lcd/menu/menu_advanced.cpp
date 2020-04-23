@@ -327,7 +327,6 @@ void menu_backlash();
 
 #endif // SHOW_MENU_ADVANCED_TEMPERATURE
 
-#if DISABLED(SLIM_LCD_MENUS)
 
   #if ENABLED(DISTINCT_E_FACTORS)
     inline void _reset_e_acceleration_rate(const uint8_t e) { if (e == active_extruder) planner.reset_acceleration_rates(); }
@@ -339,6 +338,7 @@ void menu_backlash();
     }
   #endif
 
+#if DISABLED(SLIM_LCD_MENUS)
   // M203 / M205 Velocity options
   void menu_advanced_velocity() {
     // M203 Max Feedrate
