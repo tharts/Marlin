@@ -300,7 +300,7 @@
   #define E0_CS_PIN                        P0_21
   #define E1_CS_PIN                        P4_29
   #define E2_CS_PIN                        P4_29
-
+#endif
 // Hardware SPI is on EXP2. See if you can make it work:
 // https://github.com/makerbase-mks/MKS-SBASE/issues/25
 #define TMC_USE_SW_SPI
