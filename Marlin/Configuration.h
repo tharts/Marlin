@@ -70,8 +70,8 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(T. Arts, UBL config)" // Who made the changes.
-//#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
+#define STRING_CONFIG_H_AUTHOR "(T. Arts)" // Who made the changes.
+#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
  * *** VENDORS PLEASE READ ***
@@ -131,11 +131,11 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "3D-Makinator Dual"
+//#define CUSTOM_MACHINE_NAME "3D-Makinator Dual"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like http://www.uuidgenerator.net/version4
-#define MACHINE_UUID "8eca0461-abac-4cc0-9b47-a9e87487292b"
+//#define MACHINE_UUID "8eca0461-abac-4cc0-9b47-a9e87487292b"
 
 // @section extruder
 
@@ -689,13 +689,13 @@
  */
 #define X_DRIVER_TYPE  TMC5160
 #define Y_DRIVER_TYPE  TMC5160
-#define Z_DRIVER_TYPE  TMC2130
+#define Z_DRIVER_TYPE  TMC5160
 //#define X2_DRIVER_TYPE A4988
 //#define Y2_DRIVER_TYPE A4988
 //#define Z2_DRIVER_TYPE A4988
 //#define Z3_DRIVER_TYPE A4988
 //#define Z4_DRIVER_TYPE A4988
-#define E0_DRIVER_TYPE TMC2130
+#define E0_DRIVER_TYPE TMC5160
 //#define E1_DRIVER_TYPE A4988
 //#define E2_DRIVER_TYPE A4988
 //#define E3_DRIVER_TYPE A4988
@@ -752,7 +752,7 @@
  */
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 1632.65, 417.00, 417.00 }
 #define NEMA17_FULL_STEPS 200.0
-#define NEMA17_MICROSTEPS 16.0
+#define NEMA17_MICROSTEPS 32.0
 #define NEMA17_MOTOR_STEPS (NEMA17_FULL_STEPS * NEMA17_MICROSTEPS)
 #define PULLEY_PITCH 2.0
 #define PULLEY_TEETH 16.0
@@ -777,11 +777,11 @@
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 5, 25, 25 }
+#define DEFAULT_MAX_FEEDRATE          { 300, 300, 5, 25 }
 
 #define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
-  #define MAX_FEEDRATE_EDIT_VALUES    { 600, 600, 10, 50, 50 } // ...or, set your own edit limits
+  #define MAX_FEEDRATE_EDIT_VALUES    { 600, 600, 10, 50 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -790,11 +790,11 @@
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 100, 10000, 10000 }
+#define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 100, 10000 }
 
 #define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
-  #define MAX_ACCEL_EDIT_VALUES       { 6000, 6000, 200, 20000, 20000 } // ...or, set your own edit limits
+  #define MAX_ACCEL_EDIT_VALUES       { 6000, 6000, 200, 20000 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -1117,12 +1117,12 @@
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
 #define INVERT_X_DIR true // TMC 2130 false, for TMC5160 true
 #define INVERT_Y_DIR true // TMC 2130 false, for TMC5160 true
-#define INVERT_Z_DIR true // inverted because Z-Motors on bottom
+#define INVERT_Z_DIR false // inverted because Z-Motors on bottom
 
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR true  // true for titan
+#define INVERT_E0_DIR false  // true for titan
 #define INVERT_E1_DIR false // true for titan
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false

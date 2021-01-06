@@ -1851,8 +1851,8 @@
  *
  * Override the default value based on the driver type set in Configuration.h.
  */
-//#define MINIMUM_STEPPER_POST_DIR_DELAY 650
-//#define MINIMUM_STEPPER_PRE_DIR_DELAY 650
+#define MINIMUM_STEPPER_POST_DIR_DELAY 20
+#define MINIMUM_STEPPER_PRE_DIR_DELAY 20
 
 /**
  * Minimum stepper driver pulse width (in µs)
@@ -1879,7 +1879,7 @@
  *
  * Override the default value based on the driver type set in Configuration.h.
  */
-//#define MAXIMUM_STEPPER_RATE 250000
+#define MAXIMUM_STEPPER_RATE 5000000
 
 // @section temperature
 
@@ -2270,7 +2270,7 @@
   #define INTERPOLATE       true  // Interpolate X/Y/Z_MICROSTEPS to 256
 
   #if AXIS_IS_TMC(X)
-    #define X_CURRENT       1100        // (mA) RMS current. Multiply by 1.414 for peak current.
+    #define X_CURRENT       1000        // (mA) RMS current. Multiply by 1.414 for peak current.
     #define X_CURRENT_HOME  X_CURRENT  // (mA) RMS current for sensorless homing
     #define X_MICROSTEPS     32    // 0..256
     #define X_RSENSE          0.075 // 0.11 (110 mOhm) for TMC2130, 0.075 (75 mOhm) for TMC5160
@@ -2286,7 +2286,7 @@
   #endif
 
   #if AXIS_IS_TMC(Y)
-    #define Y_CURRENT       1100
+    #define Y_CURRENT       1000
     #define Y_CURRENT_HOME  Y_CURRENT
     #define Y_MICROSTEPS     32
     #define Y_RSENSE          0.075
@@ -2305,7 +2305,7 @@
     #define Z_CURRENT       800
     #define Z_CURRENT_HOME  Z_CURRENT
     #define Z_MICROSTEPS     32
-    #define Z_RSENSE          0.11
+    #define Z_RSENSE          0.075
     #define Z_CHAIN_POS      -1
   #endif
 
@@ -2336,7 +2336,7 @@
   #if AXIS_IS_TMC(E0)
     #define E0_CURRENT      800
     #define E0_MICROSTEPS    32
-    #define E0_RSENSE         0.11
+    #define E0_RSENSE         0.075
     #define E0_CHAIN_POS     -1
   #endif
 
@@ -2393,6 +2393,10 @@
    * Override default SPI pins for TMC2130, TMC2160, TMC2660, TMC5130 and TMC5160 drivers here.
    * The default pins can be found in your board's pins file.
    */
+  #define X_CS_PIN                         P0_04
+  #define Y_CS_PIN                         P0_10
+  #define Z_CS_PIN                         P0_19
+  #define E0_CS_PIN                        P0_21
   //#define X_CS_PIN          -1
   //#define Y_CS_PIN          -1
   //#define Z_CS_PIN          -1
