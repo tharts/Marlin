@@ -302,7 +302,7 @@
  * This board does not have enough pins to use hardware serial.
  */
 
-#if HAS_DRIVER(TMC2130)
+#if HAS_DRIVER(TMC2130) || HAS_DRIVER(TMC5160)
   // J8
   #define X_CS_PIN                         P0_04
   #define Y_CS_PIN                         P0_10
