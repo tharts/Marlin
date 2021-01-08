@@ -327,18 +327,16 @@ void menu_backlash();
 
 #endif // SHOW_MENU_ADVANCED_TEMPERATURE
 
+#if ENABLED(DISTINCT_E_FACTORS)
+  inline void _reset_e_acceleration_rate(const uint8_t e) { if (e == active_extruder) planner.reset_acceleration_rates(); }
+  inline void _planner_refresh_e_positioning(const uint8_t e) {
+    if (e == active_extruder)
+      planner.refresh_positioning();
+    else
+      planner.steps_to_mm[E_AXIS_N(e)] = 1.0f / planner.settings.axis_steps_per_mm[E_AXIS_N(e)];
+  }
+#endif
 #if DISABLED(SLIM_LCD_MENUS)
-
-  #if ENABLED(DISTINCT_E_FACTORS)
-    inline void _reset_e_acceleration_rate(const uint8_t e) { if (e == active_extruder) planner.reset_acceleration_rates(); }
-    inline void _planner_refresh_e_positioning(const uint8_t e) {
-      if (e == active_extruder)
-        planner.refresh_positioning();
-      else
-        planner.steps_to_mm[E_AXIS_N(e)] = 1.0f / planner.settings.axis_steps_per_mm[E_AXIS_N(e)];
-    }
-  #endif
-
   // M203 / M205 Velocity options
   void menu_advanced_velocity() {
     // M203 Max Feedrate
