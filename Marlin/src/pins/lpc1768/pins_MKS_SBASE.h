@@ -97,6 +97,10 @@
 #define TEMP_1_PIN                      P0_25_A2  // A2 (TH3)
 #define TEMP_2_PIN                      P0_26_A3  // A3 (TH4)
 
+#if TEMP_SENSOR_CHAMBER
+  #define TEMP_CHAMBER_PIN 3
+  #define HEATER_CHAMBER_PIN -1  // On/off pin for enclosure heating system
+#endif
 //
 // Heaters / Fans
 //
@@ -291,14 +295,14 @@
  * This board does not have enough pins to use hardware serial.
  */
 
-#if HAS_DRIVER(TMC2130)
+#if HAS_DRIVER(TMC2130) || HAS_DRIVER(TMC5160)
   // J8
-  #define X_CS_PIN                         P1_22
-  #define Y_CS_PIN                         P1_23
-  #define Z_CS_PIN                         P2_12
-  #define E0_CS_PIN                        P2_11
-  #define E1_CS_PIN                        P4_28
-
+  #define X_CS_PIN                         P0_04
+  #define Y_CS_PIN                         P0_10
+  #define Z_CS_PIN                         P0_19
+  #define E0_CS_PIN                        P0_21
+  #define E1_CS_PIN                        P4_29
+  #define E2_CS_PIN                        P4_29
   // Hardware SPI is on EXP2. See if you can make it work:
   // https://github.com/makerbase-mks/MKS-SBASE/issues/25
   #define TMC_USE_SW_SPI
@@ -310,7 +314,7 @@
       #define TMC_SW_MISO                  P0_02  // AUX1
     #endif
     #ifndef TMC_SW_SCK
-      #define TMC_SW_SCK                   P0_26  // TH4
+      #define TMC_SW_SCK                   P1_22  // TH4
     #endif
   #endif
 

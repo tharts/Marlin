@@ -1,4 +1,21 @@
+FILENAME_BUILDNO = 'versioning'
+FILENAME_VERSION_H = 'Marlin/Version.h'
+version = 'v2.0.7.2.'
 
+import datetime
+
+build_no = 0
+try:
+    with open(FILENAME_BUILDNO) as f:
+        build_no = int(f.readline()) + 1
+except:
+    print('Starting build number from 1..')
+    build_no = 1
+with open(FILENAME_BUILDNO, 'w+') as f:
+    f.write(str(build_no))
+    print('Build number: {}'.format(build_no))
+
+hf = f"""
 /**
  * Marlin 3D Printer Firmware
  * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
@@ -29,7 +46,7 @@
 /**
  * Marlin release version identifier
  */
-#define SHORT_BUILD_VERSION "v2.0.7.2.52"
+#define SHORT_BUILD_VERSION "{version+str(build_no)}"
 
 /**
  * Verbose version identifier which should contain a reference to the location
@@ -42,7 +59,7 @@
  * here we define this default string as the date where the latest release
  * version was tagged.
  */
-#define STRING_DISTRIBUTION_DATE "2021-01-08"
+#define STRING_DISTRIBUTION_DATE "{datetime.datetime.now().date()}"
 
 /**
  * Defines a generic printer name to be output to the LCD after booting Marlin.
@@ -51,8 +68,8 @@
 
 /**
  * The SOURCE_CODE_URL is the location where users will find the Marlin Source
- * Code which is installed on the device. In most cases —unless the manufacturer
- * has a distinct Github fork— the Source Code URL should just be the main
+ * Code which is installed on the device. In most cases â€”unless the manufacturer
+ * has a distinct Github forkâ€” the Source Code URL should just be the main
  * Marlin repository.
  */
 #define SOURCE_CODE_URL "https://github.com/tharts/Marlin"
@@ -80,3 +97,18 @@
 
 
 
+"""
+with open(FILENAME_VERSION_H, 'w+') as f:
+    f.write(hf)
+
+'''
+#ifndef BUILD_NUMBER
+  #define BUILD_NUMBER "{}"
+#endif
+#ifndef VERSION
+  #define VERSION "{} - {}"
+#endif
+#ifndef VERSION_SHORT
+  #define VERSION_SHORT "{}"
+#endif
+'''
