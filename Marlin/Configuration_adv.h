@@ -807,7 +807,7 @@
 #if ENABLED(ASSISTED_TRAMMING)
 
   // Define positions for probe points.
-  #define TRAMMING_POINT_XY { {  50, 10 }, { 190,  10 }, { 190, 205 }, { 50, 205 } }
+  #define TRAMMING_POINT_XY { {  67, 10 }, { 200,  10 }, { 200, 200 }, { 67, 200 } }
 
   // Define position names for probe points.
   #define TRAMMING_POINT_NAME_1 "Front-Left"
@@ -1722,12 +1722,12 @@
  * Override if the automatically selected points are inadequate.
  */
 #if EITHER(AUTO_BED_LEVELING_3POINT, AUTO_BED_LEVELING_UBL)
-  //#define PROBE_PT_1_X 15
-  //#define PROBE_PT_1_Y 180
-  //#define PROBE_PT_2_X 15
-  //#define PROBE_PT_2_Y 20
-  //#define PROBE_PT_3_X 170
-  //#define PROBE_PT_3_Y 20
+  #define PROBE_PT_1_X 67
+  #define PROBE_PT_1_Y 200
+  #define PROBE_PT_2_X 67
+  #define PROBE_PT_2_Y 20
+  #define PROBE_PT_3_X 200
+  #define PROBE_PT_3_Y 20
 #endif
 
 /**
@@ -1750,10 +1750,10 @@
  * the probe to be unable to reach any points.
  */
 #if PROBE_SELECTED && !IS_KINEMATIC
-  //#define PROBING_MARGIN_LEFT PROBING_MARGIN
-  //#define PROBING_MARGIN_RIGHT PROBING_MARGIN
-  //#define PROBING_MARGIN_FRONT PROBING_MARGIN
-  //#define PROBING_MARGIN_BACK PROBING_MARGIN
+  #define PROBING_MARGIN_LEFT 67
+  #define PROBING_MARGIN_RIGHT 10
+  #define PROBING_MARGIN_FRONT 10
+  #define PROBING_MARGIN_BACK 10
 #endif
 
 #if EITHER(MESH_BED_LEVELING, AUTO_BED_LEVELING_UBL)
@@ -1762,10 +1762,10 @@
   //#define MESH_MIN_Y MESH_INSET
   //#define MESH_MAX_X X_BED_SIZE - (MESH_INSET)
   //#define MESH_MAX_Y Y_BED_SIZE - (MESH_INSET)
-  #define MESH_MIN_X 0
-  #define MESH_MIN_Y 0
-  #define MESH_MAX_X 220
-  #define MESH_MAX_Y 220
+  #define MESH_MIN_X 5
+  #define MESH_MIN_Y 10
+  #define MESH_MAX_X 210
+  #define MESH_MAX_Y 200
 #endif
 
 #if BOTH(AUTO_BED_LEVELING_UBL, EEPROM_SETTINGS)
