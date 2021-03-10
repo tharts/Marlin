@@ -807,7 +807,7 @@
 #if ENABLED(ASSISTED_TRAMMING)
 
   // Define positions for probe points.
-  #define TRAMMING_POINT_XY { {  67, 10 }, { 200,  10 }, { 200, 200 }, { 67, 200 } }
+  #define TRAMMING_POINT_XY { {  30, 5 }, { 195,  5 }, { 195, 195 }, { 30, 195 } }
 
   // Define position names for probe points.
   #define TRAMMING_POINT_NAME_1 "Front-Left"
@@ -1722,12 +1722,12 @@
  * Override if the automatically selected points are inadequate.
  */
 #if EITHER(AUTO_BED_LEVELING_3POINT, AUTO_BED_LEVELING_UBL)
-  #define PROBE_PT_1_X 67
-  #define PROBE_PT_1_Y 200
-  #define PROBE_PT_2_X 67
-  #define PROBE_PT_2_Y 20
-  #define PROBE_PT_3_X 200
-  #define PROBE_PT_3_Y 20
+  #define PROBE_PT_1_X 25
+  #define PROBE_PT_1_Y 175
+  #define PROBE_PT_2_X 25
+  #define PROBE_PT_2_Y 25
+  #define PROBE_PT_3_X 175
+  #define PROBE_PT_3_Y 25
 #endif
 
 /**
