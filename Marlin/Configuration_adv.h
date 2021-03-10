@@ -1750,10 +1750,10 @@
  * the probe to be unable to reach any points.
  */
 #if PROBE_SELECTED && !IS_KINEMATIC
-  #define PROBING_MARGIN_LEFT 67
-  #define PROBING_MARGIN_RIGHT 10
-  #define PROBING_MARGIN_FRONT 10
-  #define PROBING_MARGIN_BACK 10
+  #define PROBING_MARGIN_LEFT 5
+  #define PROBING_MARGIN_RIGHT 0
+  #define PROBING_MARGIN_FRONT 5
+  #define PROBING_MARGIN_BACK 5
 #endif
 
 #if EITHER(MESH_BED_LEVELING, AUTO_BED_LEVELING_UBL)
@@ -1762,9 +1762,9 @@
   //#define MESH_MIN_Y MESH_INSET
   //#define MESH_MAX_X X_BED_SIZE - (MESH_INSET)
   //#define MESH_MAX_Y Y_BED_SIZE - (MESH_INSET)
-  #define MESH_MIN_X 5
-  #define MESH_MIN_Y 10
-  #define MESH_MAX_X 210
+  #define MESH_MIN_X 0
+  #define MESH_MIN_Y 0
+  #define MESH_MAX_X 195
   #define MESH_MAX_Y 200
 #endif
 
