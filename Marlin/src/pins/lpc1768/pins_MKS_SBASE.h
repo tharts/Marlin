@@ -98,7 +98,7 @@
 #define TEMP_2_PIN                      P0_26_A3  // A3 (TH4)
 
 #if TEMP_SENSOR_CHAMBER
-  #define TEMP_CHAMBER_PIN 3
+  #define TEMP_CHAMBER_PIN P0_26_A3
   #define HEATER_CHAMBER_PIN -1  // On/off pin for enclosure heating system
 #endif
 //
