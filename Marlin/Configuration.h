@@ -505,9 +505,9 @@
   #if ENABLED(PID_PARAMS_PER_HOTEND)
     // Specify between 1 and HOTENDS values per array.
     // If fewer than EXTRUDER values are provided, the last element will be repeated.
-    #define DEFAULT_Kp_LIST {  42.21,  17.26 }
-    #define DEFAULT_Ki_LIST {   4.5,   1.15 }
-    #define DEFAULT_Kd_LIST { 98.86, 64.63 }
+    #define DEFAULT_Kp_LIST {  35.31,  17.26 }
+    #define DEFAULT_Ki_LIST {   2.93,   1.15 }
+    #define DEFAULT_Kd_LIST { 106.39, 64.63 }
   #else
     #define DEFAULT_Kp  42.21
     #define DEFAULT_Ki   4.5
@@ -555,9 +555,9 @@
   //#define DEFAULT_bedKd 305.4
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
-  #define DEFAULT_bedKp 140.41
-  #define DEFAULT_bedKi 7.22
-  #define DEFAULT_bedKd 682.76
+  #define DEFAULT_bedKp 53.91
+  #define DEFAULT_bedKi 3.47
+  #define DEFAULT_bedKd 559.10
 #endif // PIDTEMPBED
 
 #if EITHER(PIDTEMP, PIDTEMPBED)
