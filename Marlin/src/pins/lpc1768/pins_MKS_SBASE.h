@@ -47,19 +47,19 @@
 // Servos
 //
 #define SERVO0_PIN                         P1_23  // J8-3 (low jitter)
-#define SERVO1_PIN                         P2_12  // J8-4
-#define SERVO2_PIN                         P2_11  // J8-5
-#define SERVO3_PIN                         P4_28  // J8-6
+//#define SERVO1_PIN                         P2_12  // J8-4
+//#define SERVO2_PIN                         P2_11  // J8-5
+//#define SERVO3_PIN                         P4_28  // J8-6
 
 //
 // Limit Switches - Not Interrupt Capable
 //
-#define X_MIN_PIN                          P1_24  // 10k pullup to 3.3V, 1K series
-#define X_MAX_PIN                          P1_25  // 10k pullup to 3.3V, 1K series
-#define Y_MIN_PIN                          P1_26  // 10k pullup to 3.3V, 1K series
-#define Y_MAX_PIN                          P1_27  // 10k pullup to 3.3V, 1K series
+//#define X_MIN_PIN                          P1_24  // 10k pullup to 3.3V, 1K series
+//#define X_MAX_PIN                          P1_25  // 10k pullup to 3.3V, 1K series
+//#define Y_MIN_PIN                          P1_26  // 10k pullup to 3.3V, 1K series
+//#define Y_MAX_PIN                          P1_27  // 10k pullup to 3.3V, 1K series
 #define Z_MIN_PIN                          P1_28  // The original Mks Sbase DIO19 has a 10k pullup to 3.3V or 5V, 1K series, so when using a Zprobe we must use DIO41 (J8 P1.22)
-#define Z_MAX_PIN                          P1_29  // 10k pullup to 3.3V, 1K series
+//#define Z_MAX_PIN                          P1_29  // 10k pullup to 3.3V, 1K series
 
 #ifndef Z_MIN_PROBE_PIN
   #define Z_MIN_PROBE_PIN                  P4_28  // Connector J8
@@ -82,11 +82,15 @@
 
 #define E0_STEP_PIN                        P2_03
 #define E0_DIR_PIN                         P0_22
-#define E0_ENABLE_PIN                      P0_21
+//#define E0_ENABLE_PIN                      P0_21
 
 #define E1_STEP_PIN                        P2_08
 #define E1_DIR_PIN                         P2_13
-#define E1_ENABLE_PIN                      P4_29
+//#define E1_ENABLE_PIN                      P4_29
+
+#define E2_STEP_PIN                        P2_11
+#define E2_DIR_PIN                         P4_28
+//#define E2_ENABLE_PIN                      P1_24
 
 //
 // Temperature Sensors
@@ -94,8 +98,8 @@
 //
 #define TEMP_BED_PIN                    P0_23_A0  // A0 (TH1)
 #define TEMP_0_PIN                      P0_24_A1  // A1 (TH2)
-#define TEMP_1_PIN                      P0_25_A2  // A2 (TH3)
-#define TEMP_2_PIN                      P0_26_A3  // A3 (TH4)
+#define TEMP_1_PIN                      P0_24_A1  // A2 (TH3)
+#define TEMP_2_PIN                      P0_24_A1  // A3 (TH4)
 
 #if TEMP_SENSOR_CHAMBER
   #define TEMP_CHAMBER_PIN P0_26_A3
@@ -302,7 +306,7 @@
   #define Z_CS_PIN                         P0_19
   #define E0_CS_PIN                        P0_21
   #define E1_CS_PIN                        P4_29
-  #define E2_CS_PIN                        P4_29
+  #define E2_CS_PIN                        P2_12 // P1_24
   // Hardware SPI is on EXP2. See if you can make it work:
   // https://github.com/makerbase-mks/MKS-SBASE/issues/25
   #define TMC_USE_SW_SPI
